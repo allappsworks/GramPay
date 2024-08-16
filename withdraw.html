@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)https://allappsreveiws.com.ng/grampay/withdraw.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .withdraw {
+            width: 90%;
+            height: auto;
+            background: #ffffff;
+            margin: 0 auto;
+            border-radius: 10px;
+            position: relative;
+            box-shadow: 5px 10px 10px grey;
+        }
+        .withdraw h2 {
+            padding-left: 14px;
+        }
+        .withdraw input {
+            width: 88%;
+            padding: 10px;
+            outline: none;
+            display: block;
+            margin: 0 auto;
+            height: 24px;
+            border: 1px solid #7a57d1;
+        }
+        .withdraw button {
+            width: 91%;
+            outline: none;
+            display: block;
+            margin: 0 auto;     
+            height: 39px;
+            border-radius: 10px;
+            border: none;
+            background: #7a57d1;
+            color: white;
+        }
+    </style><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+            const amount = document.getElementById('amount');
+            const accountNumber = document.getElementById('accountNumber');
+            const bankName = document.getElementById('bankName');
+            const accountName = document.getElementById('accountName');
+            
+            let isValid = true;
+
+            if (!amount.value) {
+                amount.setCustomValidity('Please enter the amount.');
+                isValid = false;
+            } else {
+                amount.setCustomValidity('');
+            }
+
+            if (!accountNumber.value) {
+                accountNumber.setCustomValidity('Please enter the account number.');
+                isValid = false;
+            } else {
+                accountNumber.setCustomValidity('');
+            }
+
+            if (!bankName.value) {
+                bankName.setCustomValidity('Please enter the bank name.');
+                isValid = false;
+            } else {
+                bankName.setCustomValidity('');
+            }
+
+            if (!accountName.value) {
+                accountName.setCustomValidity('Please enter the account name.');
+                isValid = false;
+            } else {
+                accountName.setCustomValidity('');
+            }
+
+            if (isValid) {
+                localStorage.setItem('amount', amount.value);
+                localStorage.setItem('accountNumber', accountNumber.value);
+                localStorage.setItem('bankName', bankName.value);
+                localStorage.setItem('accountName', accountName.value);
+                window.location.href = 'congrats.html';
+            } else {
+                // Trigger the native validation UI
+                event.target.reportValidity();
+            }
+        }
+    </script>
+    
+    <div class="withdraw">
+        <h2>Withdraw</h2>
+        <form onsubmit="submitForm(event)">
+            <input type="text" id="amount" placeholder="Amount" required=""> <br>
+            <input type="text" id="accountNumber" placeholder="Account Number" required=""> <br>
+            <input type="text" id="bankName" placeholder="Bank Name" required=""> <br>
+            <input type="text" id="accountName" placeholder="Account Name" required=""> <br>
+            <button type="submit">Withdraw</button> <br> <br>
+        </form>
+    </div>
+
+
+</body></html>

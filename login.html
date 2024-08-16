@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)https://allappsreveiws.com.ng/grampay/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login with PIN</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fff;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px;
+            font-size: 18px;
+            color: #000;
+            margin-bottom: 20px;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+        }
+
+        .network, .battery {
+            margin-left: 10px;
+        }
+
+        .login-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile {
+            margin-bottom: 20px;
+        }
+
+        .profile-icon {
+            width: 80px;
+            height: 80px;
+            background-color: #7a57d1;
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .profile-icon h2 {
+            text-align: center;
+            padding-top: 30%;
+            color: white;
+        }
+
+        .username {
+            font-size: 30px;
+            color: #333;
+        }
+
+        .login-text {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .pin-dots {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: #ccc;
+            border-radius: 50%;
+            margin: 0 5px;
+        }
+
+        .keypad {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .key {
+            width: 100%;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            background-color: #eee;
+            border: none;
+            border-radius: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #7a57d1;
+        }
+
+        .key.backspace {
+            font-size: 18px;
+        }
+
+        .switch-account {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .switch-account a {
+            color: #7a57d1;
+            text-decoration: none;
+        }
+
+        .switch-account a:hover {
+            text-decoration: underline;
+        }
+
+        .notification {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color:#7a57d1;
+            color: white;
+            padding: 15px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .notification.show {
+            display: block;
+            animation: slideDown 0.5s forwards, slideUp 0.5s forwards 3s;
+        }
+
+        @keyframes slideDown {
+            0% {
+                top: -50px;
+            }
+            100% {
+                top: 0;
+            }
+        }
+
+        @keyframes slideUp {
+            0% {
+                top: 0;
+            }
+            100% {
+                top: -50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="time"></div>
+            <div class="status">
+                <div class="network"></div>
+                <div class="battery"></div>
+            </div>
+        </div>
+        <div class="login-box">
+            <div class="profile">
+                <div class="profile-icon">
+                    <h2>GP</h2>
+                </div>
+                <div class="username">Gram Pay</div>
+                <div id="notification" class="notification">Olivia cashed out ₦156,000.00</div>
+            </div>
+            <div class="login-text">Login with PIN</div>
+            <div class="pin-dots">
+                <span class="dot" style="background-color: rgb(51, 51, 51);"></span>
+                <span class="dot" style="background-color: rgb(51, 51, 51);"></span>
+                <span class="dot" style="background-color: rgb(51, 51, 51);"></span>
+                <span class="dot" style="background-color: rgb(51, 51, 51);"></span>
+                <span class="dot" style="background-color: rgb(51, 51, 51);"></span>
+                <span class="dot" style="background-color: rgb(51, 51, 51);"></span>
+            </div>
+            <div class="keypad">
+                <button class="key" onclick="enterKey(&#39;1&#39;)">1</button>
+                <button class="key" onclick="enterKey(&#39;2&#39;)">2</button>
+                <button class="key" onclick="enterKey(&#39;3&#39;)">3</button>
+                <button class="key" onclick="enterKey(&#39;4&#39;)">4</button>
+                <button class="key" onclick="enterKey(&#39;5&#39;)">5</button>
+                <button class="key" onclick="enterKey(&#39;6&#39;)">6</button>
+                <button class="key" onclick="enterKey(&#39;7&#39;)">7</button>
+                <button class="key" onclick="enterKey(&#39;8&#39;)">8</button>
+                <button class="key" onclick="enterKey(&#39;9&#39;)">9</button>
+                <button class="key" onclick="enterKey(&#39;0&#39;)">0</button>
+                <button class="key backspace" onclick="backspace()">←</button>
+                <button class="key backspace" onclick="checkPin()">Enter</button>
+            </div>
+            <div class="switch-account">Don't have a PIN? <a href="https://allappsreveiws.com.ng/grampay/buy.html">Buy</a></div>
+            <br>
+            <div class="switch-account">Email us <a href="mailto:grampay2024@gmail.com">Send email</a></div>
+        </div>
+    </div>
+    <script>
+        const correctPin = "662094"; // Set your 6-digit PIN here
+        let enteredPin = "";
+
+        function enterKey(key) {
+            if (enteredPin.length < 6) {
+                enteredPin += key;
+                updateDots();
+            }
+        }
+
+        function backspace() {
+            enteredPin = enteredPin.slice(0, -1);
+            updateDots();
+        }
+
+        function updateDots() {
+            const dots = document.querySelectorAll(".dot");
+            dots.forEach((dot, index) => {
+                dot.style.backgroundColor = index < enteredPin.length ? "#333" : "#ccc";
+            });
+        }
+
+        function checkPin() {
+            if (enteredPin === correctPin) {
+                window.location.href = "home.html"; // Redirect to the next page
+            } else {
+                alert("Incorrect PIN. Please try again.");
+                enteredPin = ""; // Reset PIN on incorrect attempt
+                updateDots();
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const messages = Array.from({ length: 100 }, () => `${getRandomName()} cashed out ₦${getRandomAmount()}`);
+
+            function getRandomName() {
+                const names = [
+                    "John", "Emma", "Liam", "Sophia", "Noah", "Ava", "William", "Charlotte",
+                    "James", "Amelia", "Benjamin", "Mason", "Isabella", "Lucas", "Mia",
+                    "Henry", "Harper", "Alexander", "Evelyn", "Olivia", "Daniel", "Ella",
+                    "Michael", "Abigail", "Matthew", "Avery", "Joseph", "Scarlett", "Samuel",
+                    "Grace", "David", "Lily", "Jackson", "Zoey", "Sebastian", "Chloe",
+                    "Aiden", "Aria", "Owen", "Lillian", "Gabriel", "Hannah", "Carter",
+                    "Addison", "Wyatt", "Aubrey", "Jayden", "Ellie", "Dylan", "Stella",
+                    "Luke", "Natalie", "Levi", "Zoe", "Isaac", "Leah", "Andrew", "Hazel",
+                    "Lincoln", "Violet", "Jaxon", "Aurora", "Nathan", "Savannah", "Ryan",
+                    "Audrey", "Brooklyn", "Christopher", "Bella", "Eli", "Claire",
+                    "Hunter", "Skylar", "Connor", "Lucy", "Landon", "Paisley", "Julian",
+                    "Everly", "Christian", "Anna", "Jonathan", "Caroline", "Isaiah",
+                    "Nova", "Charles", "Genesis", "Thomas", "Emilia", "Aaron", "Kennedy",                 "Ethan", "Samantha", "Adrian", "Maya", "Nicholas", "Willow",
+                "Adebayo", "Ngozi", "Chinedu", "Oluwatobi", "Fatima", "Uche", "Adesuwa",
+                "Ibrahim", "Chimamanda", "Emeka", "Zainab", "Oghenekaro", "Kehinde", "Yemi"
+            ];
+            return names[Math.floor(Math.random() * names.length)];
+        }
+
+        function getRandomAmount() {
+            return `${Math.floor(Math.random() * 200) + 1},000.00`;
+        }
+
+        const notification = document.getElementById('notification');
+        let currentIndex = 0;
+
+        function showNotification() {
+            if (messages.length > 0) {
+                notification.textContent = messages[currentIndex];
+                notification.classList.add('show');
+                currentIndex = (currentIndex + 1) % messages.length;
+                setTimeout(function () {
+                    notification.classList.remove('show');
+                    setTimeout(showNotification, Math.random() * 5000 + 1000); // Random interval between 1s and 6s
+                }, 4000); // Duration of showing the notification
+            }
+        }
+
+        // Start showing notifications after 1 second
+        setTimeout(showNotification, 1000);
+    });
+</script>
+
+</body></html>
